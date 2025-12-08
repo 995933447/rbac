@@ -1,0 +1,269 @@
+syntax = "proto3";
+
+package rbac;
+option go_package = "github.com/995933447/rbac/rbac";
+
+import "mgorm_ext.proto";
+import "easymicro_ext.proto";
+
+option (easymicro_ext.proto_gen_opts) = {
+  grpc_schema:"rbac"
+  discovery_name:"rbac"
+};
+
+enum ErrCode {
+  ErrCodeNil = 0;
+  ErrCodePermDeadLoop = 6001;
+  ErrCodeInvalidParam = 6002;
+  ErrCodeForbidRemoveNotLeafPerm = 6003;
+  ErrCodeUserRoleExisted = 6004;
+  ErrCodePermNotFound = 6005;
+  ErrCodeRoleNotFound = 6006;
+  ErrCodeUserRoleNotFound = 6007;
+  ErrCodeNameExisted = 6008;
+  ErrCodeResourceRouteExisted = 6009;
+  ErrCodePermUsedByRole = 6010;
+  ErrCodeRoleUsedByUser = 6011;
+}
+
+enum UserRoleStatus {
+  UserRoleStatusNil = 0;
+  UserRoleStatusNormal = 1; // 正常状态
+  UserRoleStatusFrozen = 2; // 冻结状态
+}
+
+enum RoleStatus {
+  RoleStatusNil = 0;
+  RoleStatusNormal = 1; // 正常状态
+  RoleStatusFrozen = 2; // 冻结状态
+}
+
+service RBAC {
+  // 检查用户是否具有资源或服务端路由的访问权限
+  rpc CheckPerm(CheckPermReq) returns (CheckPermResp);
+
+  // 获取用户列表
+  rpc ListUserRole(ListUserRoleReq) returns (ListUserRoleResp);
+
+  // 获取角色列表
+  rpc ListRole(ListRoleReq) returns (ListRoleResp);
+
+  // 获取权限列表
+  rpc ListPerm(ListPermReq) returns (ListPermResp);
+
+  // 设置用户角色
+  rpc SetUserRole(SetUserRoleReq) returns (SetUserRoleResp);
+
+  // 设置角色
+  rpc SetRole(SetRoleReq) returns (SetRoleResp);
+
+  // 设置菜单
+  rpc SetPerm(SetPermReq) returns (SetPermResp);
+
+  // 移除用户角色
+  rpc RemoveUserRole(RemoveUserRoleReq) returns (RemoveUserRoleResp);
+
+  // 移除角色
+  rpc RemoveRole(RemoveRoleReq) returns (RemoveRoleResp);
+
+  // 移除菜单
+  rpc RemovePerm(RemovePermReq) returns (RemovePermResp);
+}
+
+message RemovePermReq {
+  uint64 perm_id = 1;
+  bool auto_remove_children = 2;
+  bool auto_unbind_roles = 3;
+}
+
+message RemovePermResp {
+
+}
+
+message RemoveRoleReq {
+  uint64 role_id = 1;
+  bool auto_remove_user_roles = 2;
+}
+
+message RemoveRoleResp {
+
+}
+
+message RemoveUserRoleReq {
+  uint64 user_id = 1;
+  uint64 role_id = 2;
+}
+
+message RemoveUserRoleResp {
+
+}
+
+message SetPermReq {
+  Perm perm = 1;
+}
+
+message SetPermResp {
+  uint64 perm_id = 1;
+}
+
+message SetRoleReq {
+  Role role = 1;
+}
+
+message SetRoleResp {
+  uint64 role_id = 1;
+}
+
+message SetUserRoleReq {
+  UserRole user_role = 1;
+  string id = 2;
+}
+
+message SetUserRoleResp {
+  string id = 1;
+}
+
+message AddUserRoleReq {
+  UserRole user_role = 1;
+}
+
+message AddUserRoleResp {
+
+}
+
+message AddRoleReq {
+  Role role = 1;
+}
+
+message AddRoleResp {
+
+}
+
+message AddPermReq {
+  Perm perm = 1;
+}
+
+message AddPermResp {
+
+}
+
+message Page {
+  uint32 page_size = 1;
+  uint32 page = 2;
+}
+
+message ListPermReq {
+  Page page = 1;
+  string name = 2;
+  string scope = 3;
+  bool all_scope = 4;
+  uint64 perm_id = 5;
+  uint64 pid = 6;
+}
+
+message ListPermResp {
+  uint32 total = 1;
+  repeated Perm list = 2;
+}
+
+message ListUserRoleReq {
+  Page page = 1;
+  string scope = 2;
+  bool all_scope = 3;
+  uint64 status = 4;
+  uint64 user_id = 5;
+  uint64 role_id = 6;
+}
+
+message ListUserRoleResp {
+  uint32 total = 1;
+  message Item {
+    UserRole user_role = 1;
+    string id = 2;
+  }
+  repeated Item list = 2;
+}
+
+message ListRoleReq {
+  Page page = 1;
+  string name = 2;
+  string scope = 3;
+  bool all_scope = 4;
+  uint64 role_id = 5;
+  int32 status = 6;
+  bool only_super_admin = 7;
+  bool without_super_admin = 8;
+}
+
+message ListRoleResp {
+  uint32 total = 1;
+  repeated Role list = 2;
+}
+
+message CheckPermReq {
+  string scope = 1; // 权限应用域
+  uint64 user_id = 2; // 用户id
+  string resource_service = 3; // 需要访问的服务端路由
+  string resource_route = 4; // 资源对象，通常代表前端的页面或者按钮等
+}
+
+message CheckPermResp {
+  bool rejected = 1; // 是否无权访问
+}
+
+message UserRole {
+  option (mgorm_ext.mgorm_opts) = {
+    conn: "rbac",
+    db: "rbac",
+    tb: "user_role",
+    uniq_index_keys:["user_id,role_id"]
+    index_keys: ["scope", "role_id"]
+  };
+  uint64 user_id = 1; // 用户id
+  uint64 role_id = 2; // 角色id
+  int32 status = 3; // 状态，参考enum UserRoleStatus
+  string scope = 4; // 权限应用域，数据根据作用域可以被划分为不同的应用，相同域的数据在同一套rbac规则内，，如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
+}
+
+message Role {
+  option (mgorm_ext.mgorm_opts) = {
+    conn: "rbac",
+    db: "rbac",
+    tb: "role",
+    uniq_index_keys: ["role_id", "scope,name"],
+    index_keys: ["scope", "name"]
+  };
+  uint64 role_id = 1; // 角色id
+  string name = 2; // 角色名称
+  int32 status = 3; // 状态，参考enum RoleStatus
+  repeated uint64 perm_ids = 4; // 权限id
+  string remark = 5; // 备注
+  string scope = 6; // 权限应用域，数据根据作用域可以被划分为不同的应用，相同域的数据在同一套rbac规则内，，如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
+  bool is_super_admin = 7; // 是否超级管理员
+}
+
+message Perm {
+  option (mgorm_ext.mgorm_opts) = {
+    conn: "rbac",
+    db: "rbac",
+    tb: "perm",
+    uniq_index_keys:["perm_id", "perm_id,resource_route", "scope,resource_route", "scope,name"]
+    index_keys: ["scope", "name", "pid"]
+  };
+
+  uint64 perm_id = 1; // 权限id
+  string name = 2; // 权限名称
+  string resource_route = 3; // 可访问的资源路径,可以是任意字符串,通用用于代表前端表示,如页面或者按钮或者菜单等
+  repeated ResourceService resource_services = 4; // 可访问的资源服务,通常代表访问的后端标识,如api.是一个列表,通常一个前端路径对应多个接口
+  string scope = 5; // 权限应用域，任意标识字符串,数据根据作用域可以被划分为不同的应用,相同域的数据在同一套rbac规则内,如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
+  uint64 pid = 6; // 父级菜单id
+}
+
+// 资源服务,通常代表后端标识,如api名称或者api路径等
+message ResourceService {
+  option (mgorm_ext.mgorm_opts) = {
+    is_pure_struct: true
+  };
+  string service = 1; // 服务字符串标识,可用api名称或者api路径标识
+  string extra = 2; // 存储一些扩展额外信息
+}
