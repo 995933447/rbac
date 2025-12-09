@@ -189,7 +189,7 @@ message ListRoleReq {
   string name = 2;
   string scope = 3;
   bool all_scope = 4;
-  uint64 role_id = 5;
+  repeated uint64 role_ids = 5;
   int32 status = 6;
   bool only_super_admin = 7;
   bool without_super_admin = 8;

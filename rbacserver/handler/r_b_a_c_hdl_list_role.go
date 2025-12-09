@@ -27,8 +27,8 @@ func (s *RBAC) ListRole(ctx context.Context, req *rbac.ListRoleReq) (*rbac.ListR
 		filter["name"] = req.Name
 	}
 
-	if req.RoleId > 0 {
-		filter["role_id"] = req.RoleId
+	if len(req.RoleIds) > 0 {
+		filter["role_id"] = bson.M{"$in": req.RoleIds}
 	}
 
 	if !req.AllScope && req.Scope != "" {

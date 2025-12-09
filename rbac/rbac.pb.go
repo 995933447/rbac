@@ -1311,7 +1311,7 @@ type ListRoleReq struct {
 	Name              string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Scope             string                 `protobuf:"bytes,3,opt,name=scope,proto3" json:"scope,omitempty"`
 	AllScope          bool                   `protobuf:"varint,4,opt,name=all_scope,json=allScope,proto3" json:"all_scope,omitempty"`
-	RoleId            uint64                 `protobuf:"varint,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	RoleIds           []uint64               `protobuf:"varint,5,rep,packed,name=role_ids,json=roleIds,proto3" json:"role_ids,omitempty"`
 	Status            int32                  `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
 	OnlySuperAdmin    bool                   `protobuf:"varint,7,opt,name=only_super_admin,json=onlySuperAdmin,proto3" json:"only_super_admin,omitempty"`
 	WithoutSuperAdmin bool                   `protobuf:"varint,8,opt,name=without_super_admin,json=withoutSuperAdmin,proto3" json:"without_super_admin,omitempty"`
@@ -1377,11 +1377,11 @@ func (x *ListRoleReq) GetAllScope() bool {
 	return false
 }
 
-func (x *ListRoleReq) GetRoleId() uint64 {
+func (x *ListRoleReq) GetRoleIds() []uint64 {
 	if x != nil {
-		return x.RoleId
+		return x.RoleIds
 	}
-	return 0
+	return nil
 }
 
 func (x *ListRoleReq) GetStatus() int32 {
@@ -1995,14 +1995,14 @@ const file_rbac_proto_rawDesc = "" +
 	"\x04list\x18\x02 \x03(\v2\x1b.rbac.ListUserRoleResp.ItemR\x04list\x1aC\n" +
 	"\x04Item\x12+\n" +
 	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xff\x01\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x81\x02\n" +
 	"\vListRoleReq\x12\x1e\n" +
 	"\x04page\x18\x01 \x01(\v2\n" +
 	".rbac.PageR\x04page\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05scope\x18\x03 \x01(\tR\x05scope\x12\x1b\n" +
-	"\tall_scope\x18\x04 \x01(\bR\ballScope\x12\x17\n" +
-	"\arole_id\x18\x05 \x01(\x04R\x06roleId\x12\x16\n" +
+	"\tall_scope\x18\x04 \x01(\bR\ballScope\x12\x19\n" +
+	"\brole_ids\x18\x05 \x03(\x04R\aroleIds\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\x05R\x06status\x12(\n" +
 	"\x10only_super_admin\x18\a \x01(\bR\x0eonlySuperAdmin\x12.\n" +
 	"\x13without_super_admin\x18\b \x01(\bR\x11withoutSuperAdmin\"D\n" +
