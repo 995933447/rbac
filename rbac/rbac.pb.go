@@ -1174,7 +1174,7 @@ type ListUserRoleReq struct {
 	Page          *Page                  `protobuf:"bytes,1,opt,name=page,proto3" json:"page,omitempty"`
 	Scope         string                 `protobuf:"bytes,2,opt,name=scope,proto3" json:"scope,omitempty"`
 	AllScope      bool                   `protobuf:"varint,3,opt,name=all_scope,json=allScope,proto3" json:"all_scope,omitempty"`
-	Status        uint64                 `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
+	Status        int32                  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
 	UserId        uint64                 `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RoleId        uint64                 `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1232,7 +1232,7 @@ func (x *ListUserRoleReq) GetAllScope() bool {
 	return false
 }
 
-func (x *ListUserRoleReq) GetStatus() uint64 {
+func (x *ListUserRoleReq) GetStatus() int32 {
 	if x != nil {
 		return x.Status
 	}
@@ -1987,7 +1987,7 @@ const file_rbac_proto_rawDesc = "" +
 	".rbac.PageR\x04page\x12\x14\n" +
 	"\x05scope\x18\x02 \x01(\tR\x05scope\x12\x1b\n" +
 	"\tall_scope\x18\x03 \x01(\bR\ballScope\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\x04R\x06status\x12\x17\n" +
+	"\x06status\x18\x04 \x01(\x05R\x06status\x12\x17\n" +
 	"\auser_id\x18\x05 \x01(\x04R\x06userId\x12\x17\n" +
 	"\arole_id\x18\x06 \x01(\x04R\x06roleId\"\x9e\x01\n" +
 	"\x10ListUserRoleResp\x12\x14\n" +

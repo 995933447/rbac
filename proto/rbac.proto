@@ -170,7 +170,7 @@ message ListUserRoleReq {
   Page page = 1;
   string scope = 2;
   bool all_scope = 3;
-  uint64 status = 4;
+  int32 status = 4;
   uint64 user_id = 5;
   uint64 role_id = 6;
 }
