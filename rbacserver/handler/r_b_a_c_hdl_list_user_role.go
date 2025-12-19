@@ -44,7 +44,13 @@ func (s *RBAC) ListUserRole(ctx context.Context, req *rbac.ListUserRoleReq) (*rb
 
 	resp.Total = uint32(total)
 
-	userRoles, err := mod.FindManyByPage(ctx, filter, bson.D{{"_id", -1}}, int64(req.Page.Page), int64(req.Page.PageSize))
+	var page, pageSize uint32
+	if req.Page != nil {
+		page = req.Page.Page
+		pageSize = req.Page.PageSize
+	}
+
+	userRoles, err := mod.FindManyByPage(ctx, filter, bson.D{{"_id", -1}}, int64(page), int64(pageSize))
 	if err != nil {
 		fastlog.Error(err)
 		return nil, err

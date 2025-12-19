@@ -17,10 +17,6 @@ func (s *RBAC) ListRole(ctx context.Context, req *rbac.ListRoleReq) (*rbac.ListR
 		return nil, grpc.NewRPCErrWithMsg(rbac.ErrCode_ErrCodeInvalidParam, "scope is required when all_scope is false")
 	}
 
-	if req.Page == nil {
-		return nil, grpc.NewRPCErrWithMsg(rbac.ErrCode_ErrCodeInvalidParam, "page is required")
-	}
-
 	filter := bson.M{}
 
 	if req.Name != "" {
@@ -56,7 +52,13 @@ func (s *RBAC) ListRole(ctx context.Context, req *rbac.ListRoleReq) (*rbac.ListR
 
 	resp.Total = uint32(total)
 
-	roles, err := mod.FindManyByPage(ctx, filter, bson.D{{"_id", -1}}, int64(req.Page.Page), int64(req.Page.PageSize))
+	var page, pageSize uint32
+	if req.Page != nil {
+		page = req.Page.Page
+		pageSize = req.Page.PageSize
+	}
+
+	roles, err := mod.FindManyByPage(ctx, filter, bson.D{{"_id", -1}}, int64(page), int64(pageSize))
 	if err != nil {
 		fastlog.Error(err)
 		return nil, err
