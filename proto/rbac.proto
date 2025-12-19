@@ -116,6 +116,7 @@ message SetRoleResp {
 
 message SetUserRoleReq {
   UserRole user_role = 1;
+  string id = 2;
 }
 
 message SetUserRoleResp {
