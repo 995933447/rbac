@@ -648,7 +648,6 @@ func (x *SetRoleResp) GetRoleId() uint64 {
 type SetUserRoleReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserRole      *UserRole              `protobuf:"bytes,1,opt,name=user_role,json=userRole,proto3" json:"user_role,omitempty"`
-	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -688,13 +687,6 @@ func (x *SetUserRoleReq) GetUserRole() *UserRole {
 		return x.UserRole
 	}
 	return nil
-}
-
-func (x *SetUserRoleReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
 }
 
 type SetUserRoleResp struct {
@@ -1948,10 +1940,9 @@ const file_rbac_proto_rawDesc = "" +
 	"\x04role\x18\x01 \x01(\v2\n" +
 	".rbac.RoleR\x04role\"&\n" +
 	"\vSetRoleResp\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\x04R\x06roleId\"M\n" +
+	"\arole_id\x18\x01 \x01(\x04R\x06roleId\"=\n" +
 	"\x0eSetUserRoleReq\x12+\n" +
-	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"!\n" +
+	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\"!\n" +
 	"\x0fSetUserRoleResp\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"=\n" +
 	"\x0eAddUserRoleReq\x12+\n" +
