@@ -736,6 +736,7 @@ type PermOrm struct {
 	ResourceServices []*ResourceServiceOrm `json:"resource_services" bson:"resource_services"`
 	Scope            string                `json:"scope" bson:"scope"`
 	Pid              uint64                `json:"pid" bson:"pid"`
+	ResourceType     int32                 `json:"resource_type" bson:"resource_type"`
 	CreatedAt        time.Time             `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt        time.Time             `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }

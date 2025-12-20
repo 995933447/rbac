@@ -1737,6 +1737,7 @@ type Perm struct {
 	ResourceServices []*ResourceService     `protobuf:"bytes,4,rep,name=resource_services,json=resourceServices,proto3" json:"resource_services,omitempty"` // 可访问的资源服务,通常代表访问的后端标识,如api.是一个列表,通常一个前端路径对应多个接口
 	Scope            string                 `protobuf:"bytes,5,opt,name=scope,proto3" json:"scope,omitempty"`                                               // 权限应用域，任意标识字符串,数据根据作用域可以被划分为不同的应用,相同域的数据在同一套rbac规则内,如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
 	Pid              uint64                 `protobuf:"varint,6,opt,name=pid,proto3" json:"pid,omitempty"`                                                  // 父级菜单id
+	ResourceType     int32                  `protobuf:"varint,7,opt,name=resource_type,json=resourceType,proto3" json:"resource_type,omitempty"`            // 资源类型，业务自定义，如代表页面/按钮等
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1809,6 +1810,13 @@ func (x *Perm) GetScope() string {
 func (x *Perm) GetPid() uint64 {
 	if x != nil {
 		return x.Pid
+	}
+	return 0
+}
+
+func (x *Perm) GetResourceType() int32 {
+	if x != nil {
+		return x.ResourceType
 	}
 	return 0
 }
@@ -2032,14 +2040,15 @@ const file_rbac_proto_rawDesc = "" +
 	"\x05scope\x18\x06 \x01(\tR\x05scope\x12$\n" +
 	"\x0eis_super_admin\x18\a \x01(\bR\fisSuperAdmin:8\x8a\x8e%4\n" +
 	"\x04rbac\x12\x04rbac\x1a\x04role*\x05scope*\x04name:\arole_id:\n" +
-	"scope,name\"\xb3\x02\n" +
+	"scope,name\"\xd8\x02\n" +
 	"\x04Perm\x12\x17\n" +
 	"\aperm_id\x18\x01 \x01(\x04R\x06permId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12%\n" +
 	"\x0eresource_route\x18\x03 \x01(\tR\rresourceRoute\x12B\n" +
 	"\x11resource_services\x18\x04 \x03(\v2\x15.rbac.ResourceServiceR\x10resourceServices\x12\x14\n" +
 	"\x05scope\x18\x05 \x01(\tR\x05scope\x12\x10\n" +
-	"\x03pid\x18\x06 \x01(\x04R\x03pid:k\x8a\x8e%g\n" +
+	"\x03pid\x18\x06 \x01(\x04R\x03pid\x12#\n" +
+	"\rresource_type\x18\a \x01(\x05R\fresourceType:k\x8a\x8e%g\n" +
 	"\x04rbac\x12\x04rbac\x1a\x04perm*\x05scope*\x04name*\x03pid:\aperm_id:\x16perm_id,resource_route:\x14scope,resource_route:\n" +
 	"scope,name\"J\n" +
 	"\x0fResourceService\x12\x18\n" +

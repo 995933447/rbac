@@ -257,6 +257,7 @@ message Perm {
   repeated ResourceService resource_services = 4; // 可访问的资源服务,通常代表访问的后端标识,如api.是一个列表,通常一个前端路径对应多个接口
   string scope = 5; // 权限应用域，任意标识字符串,数据根据作用域可以被划分为不同的应用,相同域的数据在同一套rbac规则内,如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
   uint64 pid = 6; // 父级菜单id
+  int32 resource_type = 7; // 资源类型，业务自定义，如代表页面/按钮等
 }
 
 // 资源服务,通常代表后端标识,如api名称或者api路径等
