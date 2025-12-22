@@ -69,6 +69,7 @@ func (s *RBAC) SetPerm(ctx context.Context, req *rbac.SetPermReq) (*rbac.SetPerm
 			ResourceRoute:    req.Perm.ResourceRoute,
 			ResourceServices: resourceServices,
 			ResourceType:     req.Perm.ResourceType,
+			Extra:            req.Perm.Extra,
 		}
 		err = mod.InsertOne(ctx, perm)
 		if err != nil {
@@ -101,6 +102,7 @@ func (s *RBAC) SetPerm(ctx context.Context, req *rbac.SetPermReq) (*rbac.SetPerm
 		ResourceRoute:    req.Perm.ResourceRoute,
 		ResourceServices: resourceServices,
 		ResourceType:     req.Perm.ResourceType,
+		Extra:            req.Perm.Extra,
 	}
 
 	bm, err := mgorm.ToBsonM(perm)

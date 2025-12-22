@@ -72,6 +72,7 @@ func (s *RBAC) ListPerm(ctx context.Context, req *rbac.ListPermReq) (*rbac.ListP
 			ResourceRoute:    perm.ResourceRoute,
 			ResourceServices: resourceServices,
 			ResourceType:     perm.ResourceType,
+			Extra:            perm.Extra,
 		})
 	}
 
