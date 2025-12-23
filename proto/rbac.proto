@@ -159,6 +159,7 @@ message ListPermReq {
   bool all_scope = 4;
   uint64 perm_id = 5;
   uint64 pid = 6;
+  string name_like = 7;
 }
 
 message ListPermResp {
@@ -193,6 +194,7 @@ message ListRoleReq {
   int32 status = 6;
   bool only_super_admin = 7;
   bool without_super_admin = 8;
+  string name_like = 9;
 }
 
 message ListRoleResp {

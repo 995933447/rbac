@@ -23,6 +23,10 @@ func (s *RBAC) ListRole(ctx context.Context, req *rbac.ListRoleReq) (*rbac.ListR
 		filter["name"] = req.Name
 	}
 
+	if req.NameLike != "" {
+		filter["name"] = bson.M{"$regex": req.NameLike, "$options": "im"}
+	}
+
 	if len(req.RoleIds) > 0 {
 		filter["role_id"] = bson.M{"$in": req.RoleIds}
 	}

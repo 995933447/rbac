@@ -23,6 +23,10 @@ func (s *RBAC) ListPerm(ctx context.Context, req *rbac.ListPermReq) (*rbac.ListP
 		filter["name"] = req.Name
 	}
 
+	if req.NameLike != "" {
+		filter["name"] = bson.M{"$regex": req.NameLike, "$options": "im"}
+	}
+
 	if !req.AllScope && req.Scope != "" {
 		filter["scope"] = req.Scope
 	}

@@ -1041,6 +1041,7 @@ type ListPermReq struct {
 	AllScope      bool                   `protobuf:"varint,4,opt,name=all_scope,json=allScope,proto3" json:"all_scope,omitempty"`
 	PermId        uint64                 `protobuf:"varint,5,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"`
 	Pid           uint64                 `protobuf:"varint,6,opt,name=pid,proto3" json:"pid,omitempty"`
+	NameLike      string                 `protobuf:"bytes,7,opt,name=name_like,json=nameLike,proto3" json:"name_like,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1115,6 +1116,13 @@ func (x *ListPermReq) GetPid() uint64 {
 		return x.Pid
 	}
 	return 0
+}
+
+func (x *ListPermReq) GetNameLike() string {
+	if x != nil {
+		return x.NameLike
+	}
+	return ""
 }
 
 type ListPermResp struct {
@@ -1315,6 +1323,7 @@ type ListRoleReq struct {
 	Status            int32                  `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
 	OnlySuperAdmin    bool                   `protobuf:"varint,7,opt,name=only_super_admin,json=onlySuperAdmin,proto3" json:"only_super_admin,omitempty"`
 	WithoutSuperAdmin bool                   `protobuf:"varint,8,opt,name=without_super_admin,json=withoutSuperAdmin,proto3" json:"without_super_admin,omitempty"`
+	NameLike          string                 `protobuf:"bytes,9,opt,name=name_like,json=nameLike,proto3" json:"name_like,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -1403,6 +1412,13 @@ func (x *ListRoleReq) GetWithoutSuperAdmin() bool {
 		return x.WithoutSuperAdmin
 	}
 	return false
+}
+
+func (x *ListRoleReq) GetNameLike() string {
+	if x != nil {
+		return x.NameLike
+	}
+	return ""
 }
 
 type ListRoleResp struct {
@@ -1985,7 +2001,7 @@ const file_rbac_proto_rawDesc = "" +
 	"\vAddPermResp\"7\n" +
 	"\x04Page\x12\x1b\n" +
 	"\tpage_size\x18\x01 \x01(\rR\bpageSize\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\rR\x04page\"\x9f\x01\n" +
+	"\x04page\x18\x02 \x01(\rR\x04page\"\xbc\x01\n" +
 	"\vListPermReq\x12\x1e\n" +
 	"\x04page\x18\x01 \x01(\v2\n" +
 	".rbac.PageR\x04page\x12\x12\n" +
@@ -1993,7 +2009,8 @@ const file_rbac_proto_rawDesc = "" +
 	"\x05scope\x18\x03 \x01(\tR\x05scope\x12\x1b\n" +
 	"\tall_scope\x18\x04 \x01(\bR\ballScope\x12\x17\n" +
 	"\aperm_id\x18\x05 \x01(\x04R\x06permId\x12\x10\n" +
-	"\x03pid\x18\x06 \x01(\x04R\x03pid\"D\n" +
+	"\x03pid\x18\x06 \x01(\x04R\x03pid\x12\x1b\n" +
+	"\tname_like\x18\a \x01(\tR\bnameLike\"D\n" +
 	"\fListPermResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12\x1e\n" +
 	"\x04list\x18\x02 \x03(\v2\n" +
@@ -2011,7 +2028,7 @@ const file_rbac_proto_rawDesc = "" +
 	"\x04list\x18\x02 \x03(\v2\x1b.rbac.ListUserRoleResp.ItemR\x04list\x1aC\n" +
 	"\x04Item\x12+\n" +
 	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\x81\x02\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x9e\x02\n" +
 	"\vListRoleReq\x12\x1e\n" +
 	"\x04page\x18\x01 \x01(\v2\n" +
 	".rbac.PageR\x04page\x12\x12\n" +
@@ -2021,7 +2038,8 @@ const file_rbac_proto_rawDesc = "" +
 	"\brole_ids\x18\x05 \x03(\x04R\aroleIds\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\x05R\x06status\x12(\n" +
 	"\x10only_super_admin\x18\a \x01(\bR\x0eonlySuperAdmin\x12.\n" +
-	"\x13without_super_admin\x18\b \x01(\bR\x11withoutSuperAdmin\"D\n" +
+	"\x13without_super_admin\x18\b \x01(\bR\x11withoutSuperAdmin\x12\x1b\n" +
+	"\tname_like\x18\t \x01(\tR\bnameLike\"D\n" +
 	"\fListRoleResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12\x1e\n" +
 	"\x04list\x18\x02 \x03(\v2\n" +
