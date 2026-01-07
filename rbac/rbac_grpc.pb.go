@@ -19,16 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RBAC_CheckPerm_FullMethodName      = "/rbac.RBAC/CheckPerm"
-	RBAC_ListUserRole_FullMethodName   = "/rbac.RBAC/ListUserRole"
-	RBAC_ListRole_FullMethodName       = "/rbac.RBAC/ListRole"
-	RBAC_ListPerm_FullMethodName       = "/rbac.RBAC/ListPerm"
-	RBAC_SetUserRole_FullMethodName    = "/rbac.RBAC/SetUserRole"
-	RBAC_SetRole_FullMethodName        = "/rbac.RBAC/SetRole"
-	RBAC_SetPerm_FullMethodName        = "/rbac.RBAC/SetPerm"
-	RBAC_RemoveUserRole_FullMethodName = "/rbac.RBAC/RemoveUserRole"
-	RBAC_RemoveRole_FullMethodName     = "/rbac.RBAC/RemoveRole"
-	RBAC_RemovePerm_FullMethodName     = "/rbac.RBAC/RemovePerm"
+	RBAC_CheckPerm_FullMethodName          = "/rbac.RBAC/CheckPerm"
+	RBAC_ListUserRole_FullMethodName       = "/rbac.RBAC/ListUserRole"
+	RBAC_ListRole_FullMethodName           = "/rbac.RBAC/ListRole"
+	RBAC_ListPerm_FullMethodName           = "/rbac.RBAC/ListPerm"
+	RBAC_SetUserRole_FullMethodName        = "/rbac.RBAC/SetUserRole"
+	RBAC_OverwriteUserRoles_FullMethodName = "/rbac.RBAC/OverwriteUserRoles"
+	RBAC_SetRole_FullMethodName            = "/rbac.RBAC/SetRole"
+	RBAC_SetPerm_FullMethodName            = "/rbac.RBAC/SetPerm"
+	RBAC_RemoveUserRole_FullMethodName     = "/rbac.RBAC/RemoveUserRole"
+	RBAC_RemoveRole_FullMethodName         = "/rbac.RBAC/RemoveRole"
+	RBAC_RemovePerm_FullMethodName         = "/rbac.RBAC/RemovePerm"
 )
 
 // RBACClient is the client API for RBAC service.
@@ -45,6 +46,8 @@ type RBACClient interface {
 	ListPerm(ctx context.Context, in *ListPermReq, opts ...grpc.CallOption) (*ListPermResp, error)
 	// 设置用户角色
 	SetUserRole(ctx context.Context, in *SetUserRoleReq, opts ...grpc.CallOption) (*SetUserRoleResp, error)
+	// 批量设置用户角色
+	OverwriteUserRoles(ctx context.Context, in *OverwriteUserRolesReq, opts ...grpc.CallOption) (*OverwriteUserRolesResp, error)
 	// 设置角色
 	SetRole(ctx context.Context, in *SetRoleReq, opts ...grpc.CallOption) (*SetRoleResp, error)
 	// 设置菜单
@@ -115,6 +118,16 @@ func (c *rBACClient) SetUserRole(ctx context.Context, in *SetUserRoleReq, opts .
 	return out, nil
 }
 
+func (c *rBACClient) OverwriteUserRoles(ctx context.Context, in *OverwriteUserRolesReq, opts ...grpc.CallOption) (*OverwriteUserRolesResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(OverwriteUserRolesResp)
+	err := c.cc.Invoke(ctx, RBAC_OverwriteUserRoles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rBACClient) SetRole(ctx context.Context, in *SetRoleReq, opts ...grpc.CallOption) (*SetRoleResp, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SetRoleResp)
@@ -179,6 +192,8 @@ type RBACServer interface {
 	ListPerm(context.Context, *ListPermReq) (*ListPermResp, error)
 	// 设置用户角色
 	SetUserRole(context.Context, *SetUserRoleReq) (*SetUserRoleResp, error)
+	// 批量设置用户角色
+	OverwriteUserRoles(context.Context, *OverwriteUserRolesReq) (*OverwriteUserRolesResp, error)
 	// 设置角色
 	SetRole(context.Context, *SetRoleReq) (*SetRoleResp, error)
 	// 设置菜单
@@ -213,6 +228,9 @@ func (UnimplementedRBACServer) ListPerm(context.Context, *ListPermReq) (*ListPer
 }
 func (UnimplementedRBACServer) SetUserRole(context.Context, *SetUserRoleReq) (*SetUserRoleResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetUserRole not implemented")
+}
+func (UnimplementedRBACServer) OverwriteUserRoles(context.Context, *OverwriteUserRolesReq) (*OverwriteUserRolesResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OverwriteUserRoles not implemented")
 }
 func (UnimplementedRBACServer) SetRole(context.Context, *SetRoleReq) (*SetRoleResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetRole not implemented")
@@ -340,6 +358,24 @@ func _RBAC_SetUserRole_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RBAC_OverwriteUserRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OverwriteUserRolesReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RBACServer).OverwriteUserRoles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RBAC_OverwriteUserRoles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RBACServer).OverwriteUserRoles(ctx, req.(*OverwriteUserRolesReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RBAC_SetRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetRoleReq)
 	if err := dec(in); err != nil {
@@ -456,6 +492,10 @@ var RBAC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetUserRole",
 			Handler:    _RBAC_SetUserRole_Handler,
+		},
+		{
+			MethodName: "OverwriteUserRoles",
+			Handler:    _RBAC_OverwriteUserRoles_Handler,
 		},
 		{
 			MethodName: "SetRole",

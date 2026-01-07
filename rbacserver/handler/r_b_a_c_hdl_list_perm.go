@@ -31,8 +31,8 @@ func (s *RBAC) ListPerm(ctx context.Context, req *rbac.ListPermReq) (*rbac.ListP
 		filter["scope"] = req.Scope
 	}
 
-	if req.PermId > 0 {
-		filter["perm_id"] = req.PermId
+	if len(req.PermIds) > 0 {
+		filter["perm_id"] = bson.M{"$in": req.PermIds}
 	}
 
 	if req.Pid > 0 {

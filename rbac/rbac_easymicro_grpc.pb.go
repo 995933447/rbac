@@ -105,6 +105,14 @@ func (s *RBAC) SetUserRole(ctx context.Context, in *SetUserRoleReq, opts ...grpc
 	return s.c.SetUserRole(ctx, in, opts...)
 }
 
+func (s *RBAC) OverwriteUserRoles(ctx context.Context, in *OverwriteUserRolesReq, opts ...grpc.CallOption) (*OverwriteUserRolesResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.OverwriteUserRoles(ctx, in, opts...)
+}
+
 func (s *RBAC) SetRole(ctx context.Context, in *SetRoleReq, opts ...grpc.CallOption) (*SetRoleResp, error) {
 	if err := s.prepareConn(); err != nil {
 		return nil, err

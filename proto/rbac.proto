@@ -54,6 +54,9 @@ service RBAC {
   // 设置用户角色
   rpc SetUserRole(SetUserRoleReq) returns (SetUserRoleResp);
 
+  // 批量设置用户角色
+  rpc OverwriteUserRoles(OverwriteUserRolesReq) returns (OverwriteUserRolesResp);
+
   // 设置角色
   rpc SetRole(SetRoleReq) returns (SetRoleResp);
 
@@ -68,6 +71,21 @@ service RBAC {
 
   // 移除菜单
   rpc RemovePerm(RemovePermReq) returns (RemovePermResp);
+}
+
+message OverwriteUserRolesReq {
+  message UserRoleInfo {
+    uint64 role_id = 1; // 角色id
+    int32 status = 2; // 状态，参考enum UserRoleStatus
+    string scope = 3; // 权限应用域，数据根据作用域可以被划分为不同的应用，相同域的数据在同一套rbac规则内，，如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
+  }
+
+  uint64 user_id = 1;
+  repeated UserRoleInfo user_roles = 2;
+}
+
+message OverwriteUserRolesResp {
+
 }
 
 message RemovePermReq {
@@ -116,7 +134,6 @@ message SetRoleResp {
 
 message SetUserRoleReq {
   UserRole user_role = 1;
-  string id = 2;
 }
 
 message SetUserRoleResp {
@@ -157,7 +174,7 @@ message ListPermReq {
   string name = 2;
   string scope = 3;
   bool all_scope = 4;
-  uint64 perm_id = 5;
+  repeated uint64 perm_ids = 5;
   uint64 pid = 6;
   string name_like = 7;
 }
@@ -172,8 +189,8 @@ message ListUserRoleReq {
   string scope = 2;
   bool all_scope = 3;
   int32 status = 4;
-  uint64 user_id = 5;
-  uint64 role_id = 6;
+  repeated uint64 user_ids = 5;
+  repeated uint64 role_ids = 6;
 }
 
 message ListUserRoleResp {

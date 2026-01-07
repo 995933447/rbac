@@ -47,6 +47,13 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
+	err = nats.HandleLikeGRPC(rbac.EasymicroGRPCPbServiceNameRBAC, "OverwriteUserRoles", handler.RBACHandler.OverwriteUserRoles, func() *rbac.OverwriteUserRolesReq {
+		return &rbac.OverwriteUserRolesReq{}
+	})
+	if err != nil {
+		return err
+	}
+
 	err = nats.HandleLikeGRPC(rbac.EasymicroGRPCPbServiceNameRBAC, "SetRole", handler.RBACHandler.SetRole, func() *rbac.SetRoleReq {
 		return &rbac.SetRoleReq{}
 	})

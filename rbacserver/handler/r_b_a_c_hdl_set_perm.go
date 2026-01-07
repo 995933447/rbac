@@ -11,6 +11,7 @@ import (
 	"github.com/995933447/mgorm"
 	"github.com/995933447/rbac/rbac"
 	"github.com/995933447/rbac/rbacserver/db"
+	"github.com/995933447/rbac/rbacserver/util"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -54,7 +55,7 @@ func (s *RBAC) SetPerm(ctx context.Context, req *rbac.SetPermReq) (*rbac.SetPerm
 
 	if req.Perm.PermId == 0 {
 		allocIdResp, err := idgen.IdGenGRPC().AllocId(ctx, &idgen.AllocIdReq{
-			TbName: rbac.PermTbName,
+			TbName: util.GenIdGenTbName(mod.GetDb(), mod.GetTb()),
 		})
 		if err != nil {
 			fastlog.Error(err)

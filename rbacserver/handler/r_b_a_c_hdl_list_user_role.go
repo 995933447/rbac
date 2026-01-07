@@ -27,12 +27,12 @@ func (s *RBAC) ListUserRole(ctx context.Context, req *rbac.ListUserRoleReq) (*rb
 		filter["status"] = req.Status
 	}
 
-	if req.UserId > 0 {
-		filter["user_id"] = req.UserId
+	if len(req.UserIds) > 0 {
+		filter["user_id"] = bson.M{"$in": req.UserIds}
 	}
 
-	if req.RoleId > 0 {
-		filter["role_id"] = req.RoleId
+	if len(req.RoleIds) > 0 {
+		filter["role_id"] = bson.M{"$in": req.RoleIds}
 	}
 
 	mod := db.NewUserRoleModel()

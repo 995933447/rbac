@@ -197,6 +197,94 @@ func (RoleStatus) EnumDescriptor() ([]byte, []int) {
 	return file_rbac_proto_rawDescGZIP(), []int{2}
 }
 
+type OverwriteUserRolesReq struct {
+	state         protoimpl.MessageState                `protogen:"open.v1"`
+	UserId        uint64                                `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserRoles     []*OverwriteUserRolesReq_UserRoleInfo `protobuf:"bytes,2,rep,name=user_roles,json=userRoles,proto3" json:"user_roles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OverwriteUserRolesReq) Reset() {
+	*x = OverwriteUserRolesReq{}
+	mi := &file_rbac_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OverwriteUserRolesReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OverwriteUserRolesReq) ProtoMessage() {}
+
+func (x *OverwriteUserRolesReq) ProtoReflect() protoreflect.Message {
+	mi := &file_rbac_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OverwriteUserRolesReq.ProtoReflect.Descriptor instead.
+func (*OverwriteUserRolesReq) Descriptor() ([]byte, []int) {
+	return file_rbac_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *OverwriteUserRolesReq) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *OverwriteUserRolesReq) GetUserRoles() []*OverwriteUserRolesReq_UserRoleInfo {
+	if x != nil {
+		return x.UserRoles
+	}
+	return nil
+}
+
+type OverwriteUserRolesResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OverwriteUserRolesResp) Reset() {
+	*x = OverwriteUserRolesResp{}
+	mi := &file_rbac_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OverwriteUserRolesResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OverwriteUserRolesResp) ProtoMessage() {}
+
+func (x *OverwriteUserRolesResp) ProtoReflect() protoreflect.Message {
+	mi := &file_rbac_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OverwriteUserRolesResp.ProtoReflect.Descriptor instead.
+func (*OverwriteUserRolesResp) Descriptor() ([]byte, []int) {
+	return file_rbac_proto_rawDescGZIP(), []int{1}
+}
+
 type RemovePermReq struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	PermId             uint64                 `protobuf:"varint,1,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"`
@@ -208,7 +296,7 @@ type RemovePermReq struct {
 
 func (x *RemovePermReq) Reset() {
 	*x = RemovePermReq{}
-	mi := &file_rbac_proto_msgTypes[0]
+	mi := &file_rbac_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -220,7 +308,7 @@ func (x *RemovePermReq) String() string {
 func (*RemovePermReq) ProtoMessage() {}
 
 func (x *RemovePermReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[0]
+	mi := &file_rbac_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -233,7 +321,7 @@ func (x *RemovePermReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePermReq.ProtoReflect.Descriptor instead.
 func (*RemovePermReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{0}
+	return file_rbac_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RemovePermReq) GetPermId() uint64 {
@@ -265,7 +353,7 @@ type RemovePermResp struct {
 
 func (x *RemovePermResp) Reset() {
 	*x = RemovePermResp{}
-	mi := &file_rbac_proto_msgTypes[1]
+	mi := &file_rbac_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -277,7 +365,7 @@ func (x *RemovePermResp) String() string {
 func (*RemovePermResp) ProtoMessage() {}
 
 func (x *RemovePermResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[1]
+	mi := &file_rbac_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -290,7 +378,7 @@ func (x *RemovePermResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePermResp.ProtoReflect.Descriptor instead.
 func (*RemovePermResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{1}
+	return file_rbac_proto_rawDescGZIP(), []int{3}
 }
 
 type RemoveRoleReq struct {
@@ -303,7 +391,7 @@ type RemoveRoleReq struct {
 
 func (x *RemoveRoleReq) Reset() {
 	*x = RemoveRoleReq{}
-	mi := &file_rbac_proto_msgTypes[2]
+	mi := &file_rbac_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -315,7 +403,7 @@ func (x *RemoveRoleReq) String() string {
 func (*RemoveRoleReq) ProtoMessage() {}
 
 func (x *RemoveRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[2]
+	mi := &file_rbac_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -328,7 +416,7 @@ func (x *RemoveRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRoleReq.ProtoReflect.Descriptor instead.
 func (*RemoveRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{2}
+	return file_rbac_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RemoveRoleReq) GetRoleId() uint64 {
@@ -353,7 +441,7 @@ type RemoveRoleResp struct {
 
 func (x *RemoveRoleResp) Reset() {
 	*x = RemoveRoleResp{}
-	mi := &file_rbac_proto_msgTypes[3]
+	mi := &file_rbac_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -365,7 +453,7 @@ func (x *RemoveRoleResp) String() string {
 func (*RemoveRoleResp) ProtoMessage() {}
 
 func (x *RemoveRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[3]
+	mi := &file_rbac_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -378,7 +466,7 @@ func (x *RemoveRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRoleResp.ProtoReflect.Descriptor instead.
 func (*RemoveRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{3}
+	return file_rbac_proto_rawDescGZIP(), []int{5}
 }
 
 type RemoveUserRoleReq struct {
@@ -391,7 +479,7 @@ type RemoveUserRoleReq struct {
 
 func (x *RemoveUserRoleReq) Reset() {
 	*x = RemoveUserRoleReq{}
-	mi := &file_rbac_proto_msgTypes[4]
+	mi := &file_rbac_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -403,7 +491,7 @@ func (x *RemoveUserRoleReq) String() string {
 func (*RemoveUserRoleReq) ProtoMessage() {}
 
 func (x *RemoveUserRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[4]
+	mi := &file_rbac_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -416,7 +504,7 @@ func (x *RemoveUserRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserRoleReq.ProtoReflect.Descriptor instead.
 func (*RemoveUserRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{4}
+	return file_rbac_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RemoveUserRoleReq) GetUserId() uint64 {
@@ -441,7 +529,7 @@ type RemoveUserRoleResp struct {
 
 func (x *RemoveUserRoleResp) Reset() {
 	*x = RemoveUserRoleResp{}
-	mi := &file_rbac_proto_msgTypes[5]
+	mi := &file_rbac_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -453,7 +541,7 @@ func (x *RemoveUserRoleResp) String() string {
 func (*RemoveUserRoleResp) ProtoMessage() {}
 
 func (x *RemoveUserRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[5]
+	mi := &file_rbac_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -466,7 +554,7 @@ func (x *RemoveUserRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserRoleResp.ProtoReflect.Descriptor instead.
 func (*RemoveUserRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{5}
+	return file_rbac_proto_rawDescGZIP(), []int{7}
 }
 
 type SetPermReq struct {
@@ -478,7 +566,7 @@ type SetPermReq struct {
 
 func (x *SetPermReq) Reset() {
 	*x = SetPermReq{}
-	mi := &file_rbac_proto_msgTypes[6]
+	mi := &file_rbac_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -490,7 +578,7 @@ func (x *SetPermReq) String() string {
 func (*SetPermReq) ProtoMessage() {}
 
 func (x *SetPermReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[6]
+	mi := &file_rbac_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -503,7 +591,7 @@ func (x *SetPermReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPermReq.ProtoReflect.Descriptor instead.
 func (*SetPermReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{6}
+	return file_rbac_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SetPermReq) GetPerm() *Perm {
@@ -522,7 +610,7 @@ type SetPermResp struct {
 
 func (x *SetPermResp) Reset() {
 	*x = SetPermResp{}
-	mi := &file_rbac_proto_msgTypes[7]
+	mi := &file_rbac_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -534,7 +622,7 @@ func (x *SetPermResp) String() string {
 func (*SetPermResp) ProtoMessage() {}
 
 func (x *SetPermResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[7]
+	mi := &file_rbac_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -547,7 +635,7 @@ func (x *SetPermResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPermResp.ProtoReflect.Descriptor instead.
 func (*SetPermResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{7}
+	return file_rbac_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SetPermResp) GetPermId() uint64 {
@@ -566,7 +654,7 @@ type SetRoleReq struct {
 
 func (x *SetRoleReq) Reset() {
 	*x = SetRoleReq{}
-	mi := &file_rbac_proto_msgTypes[8]
+	mi := &file_rbac_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -578,7 +666,7 @@ func (x *SetRoleReq) String() string {
 func (*SetRoleReq) ProtoMessage() {}
 
 func (x *SetRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[8]
+	mi := &file_rbac_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -591,7 +679,7 @@ func (x *SetRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetRoleReq.ProtoReflect.Descriptor instead.
 func (*SetRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{8}
+	return file_rbac_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SetRoleReq) GetRole() *Role {
@@ -610,7 +698,7 @@ type SetRoleResp struct {
 
 func (x *SetRoleResp) Reset() {
 	*x = SetRoleResp{}
-	mi := &file_rbac_proto_msgTypes[9]
+	mi := &file_rbac_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -622,7 +710,7 @@ func (x *SetRoleResp) String() string {
 func (*SetRoleResp) ProtoMessage() {}
 
 func (x *SetRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[9]
+	mi := &file_rbac_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -635,7 +723,7 @@ func (x *SetRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetRoleResp.ProtoReflect.Descriptor instead.
 func (*SetRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{9}
+	return file_rbac_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SetRoleResp) GetRoleId() uint64 {
@@ -648,14 +736,13 @@ func (x *SetRoleResp) GetRoleId() uint64 {
 type SetUserRoleReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserRole      *UserRole              `protobuf:"bytes,1,opt,name=user_role,json=userRole,proto3" json:"user_role,omitempty"`
-	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SetUserRoleReq) Reset() {
 	*x = SetUserRoleReq{}
-	mi := &file_rbac_proto_msgTypes[10]
+	mi := &file_rbac_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -667,7 +754,7 @@ func (x *SetUserRoleReq) String() string {
 func (*SetUserRoleReq) ProtoMessage() {}
 
 func (x *SetUserRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[10]
+	mi := &file_rbac_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -680,7 +767,7 @@ func (x *SetUserRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetUserRoleReq.ProtoReflect.Descriptor instead.
 func (*SetUserRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{10}
+	return file_rbac_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SetUserRoleReq) GetUserRole() *UserRole {
@@ -688,13 +775,6 @@ func (x *SetUserRoleReq) GetUserRole() *UserRole {
 		return x.UserRole
 	}
 	return nil
-}
-
-func (x *SetUserRoleReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
 }
 
 type SetUserRoleResp struct {
@@ -706,7 +786,7 @@ type SetUserRoleResp struct {
 
 func (x *SetUserRoleResp) Reset() {
 	*x = SetUserRoleResp{}
-	mi := &file_rbac_proto_msgTypes[11]
+	mi := &file_rbac_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -718,7 +798,7 @@ func (x *SetUserRoleResp) String() string {
 func (*SetUserRoleResp) ProtoMessage() {}
 
 func (x *SetUserRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[11]
+	mi := &file_rbac_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -731,7 +811,7 @@ func (x *SetUserRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetUserRoleResp.ProtoReflect.Descriptor instead.
 func (*SetUserRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{11}
+	return file_rbac_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SetUserRoleResp) GetId() string {
@@ -750,7 +830,7 @@ type AddUserRoleReq struct {
 
 func (x *AddUserRoleReq) Reset() {
 	*x = AddUserRoleReq{}
-	mi := &file_rbac_proto_msgTypes[12]
+	mi := &file_rbac_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -762,7 +842,7 @@ func (x *AddUserRoleReq) String() string {
 func (*AddUserRoleReq) ProtoMessage() {}
 
 func (x *AddUserRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[12]
+	mi := &file_rbac_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -775,7 +855,7 @@ func (x *AddUserRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserRoleReq.ProtoReflect.Descriptor instead.
 func (*AddUserRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{12}
+	return file_rbac_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *AddUserRoleReq) GetUserRole() *UserRole {
@@ -793,7 +873,7 @@ type AddUserRoleResp struct {
 
 func (x *AddUserRoleResp) Reset() {
 	*x = AddUserRoleResp{}
-	mi := &file_rbac_proto_msgTypes[13]
+	mi := &file_rbac_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -805,7 +885,7 @@ func (x *AddUserRoleResp) String() string {
 func (*AddUserRoleResp) ProtoMessage() {}
 
 func (x *AddUserRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[13]
+	mi := &file_rbac_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -818,7 +898,7 @@ func (x *AddUserRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserRoleResp.ProtoReflect.Descriptor instead.
 func (*AddUserRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{13}
+	return file_rbac_proto_rawDescGZIP(), []int{15}
 }
 
 type AddRoleReq struct {
@@ -830,7 +910,7 @@ type AddRoleReq struct {
 
 func (x *AddRoleReq) Reset() {
 	*x = AddRoleReq{}
-	mi := &file_rbac_proto_msgTypes[14]
+	mi := &file_rbac_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -842,7 +922,7 @@ func (x *AddRoleReq) String() string {
 func (*AddRoleReq) ProtoMessage() {}
 
 func (x *AddRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[14]
+	mi := &file_rbac_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -855,7 +935,7 @@ func (x *AddRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRoleReq.ProtoReflect.Descriptor instead.
 func (*AddRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{14}
+	return file_rbac_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddRoleReq) GetRole() *Role {
@@ -873,7 +953,7 @@ type AddRoleResp struct {
 
 func (x *AddRoleResp) Reset() {
 	*x = AddRoleResp{}
-	mi := &file_rbac_proto_msgTypes[15]
+	mi := &file_rbac_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -885,7 +965,7 @@ func (x *AddRoleResp) String() string {
 func (*AddRoleResp) ProtoMessage() {}
 
 func (x *AddRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[15]
+	mi := &file_rbac_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -898,7 +978,7 @@ func (x *AddRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRoleResp.ProtoReflect.Descriptor instead.
 func (*AddRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{15}
+	return file_rbac_proto_rawDescGZIP(), []int{17}
 }
 
 type AddPermReq struct {
@@ -910,7 +990,7 @@ type AddPermReq struct {
 
 func (x *AddPermReq) Reset() {
 	*x = AddPermReq{}
-	mi := &file_rbac_proto_msgTypes[16]
+	mi := &file_rbac_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -922,7 +1002,7 @@ func (x *AddPermReq) String() string {
 func (*AddPermReq) ProtoMessage() {}
 
 func (x *AddPermReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[16]
+	mi := &file_rbac_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -935,7 +1015,7 @@ func (x *AddPermReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermReq.ProtoReflect.Descriptor instead.
 func (*AddPermReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{16}
+	return file_rbac_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AddPermReq) GetPerm() *Perm {
@@ -953,7 +1033,7 @@ type AddPermResp struct {
 
 func (x *AddPermResp) Reset() {
 	*x = AddPermResp{}
-	mi := &file_rbac_proto_msgTypes[17]
+	mi := &file_rbac_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -965,7 +1045,7 @@ func (x *AddPermResp) String() string {
 func (*AddPermResp) ProtoMessage() {}
 
 func (x *AddPermResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[17]
+	mi := &file_rbac_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -978,7 +1058,7 @@ func (x *AddPermResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermResp.ProtoReflect.Descriptor instead.
 func (*AddPermResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{17}
+	return file_rbac_proto_rawDescGZIP(), []int{19}
 }
 
 type Page struct {
@@ -991,7 +1071,7 @@ type Page struct {
 
 func (x *Page) Reset() {
 	*x = Page{}
-	mi := &file_rbac_proto_msgTypes[18]
+	mi := &file_rbac_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1003,7 +1083,7 @@ func (x *Page) String() string {
 func (*Page) ProtoMessage() {}
 
 func (x *Page) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[18]
+	mi := &file_rbac_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1016,7 +1096,7 @@ func (x *Page) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Page.ProtoReflect.Descriptor instead.
 func (*Page) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{18}
+	return file_rbac_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *Page) GetPageSize() uint32 {
@@ -1039,7 +1119,7 @@ type ListPermReq struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Scope         string                 `protobuf:"bytes,3,opt,name=scope,proto3" json:"scope,omitempty"`
 	AllScope      bool                   `protobuf:"varint,4,opt,name=all_scope,json=allScope,proto3" json:"all_scope,omitempty"`
-	PermId        uint64                 `protobuf:"varint,5,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"`
+	PermIds       []uint64               `protobuf:"varint,5,rep,packed,name=perm_ids,json=permIds,proto3" json:"perm_ids,omitempty"`
 	Pid           uint64                 `protobuf:"varint,6,opt,name=pid,proto3" json:"pid,omitempty"`
 	NameLike      string                 `protobuf:"bytes,7,opt,name=name_like,json=nameLike,proto3" json:"name_like,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1048,7 +1128,7 @@ type ListPermReq struct {
 
 func (x *ListPermReq) Reset() {
 	*x = ListPermReq{}
-	mi := &file_rbac_proto_msgTypes[19]
+	mi := &file_rbac_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1060,7 +1140,7 @@ func (x *ListPermReq) String() string {
 func (*ListPermReq) ProtoMessage() {}
 
 func (x *ListPermReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[19]
+	mi := &file_rbac_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1073,7 +1153,7 @@ func (x *ListPermReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermReq.ProtoReflect.Descriptor instead.
 func (*ListPermReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{19}
+	return file_rbac_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListPermReq) GetPage() *Page {
@@ -1104,11 +1184,11 @@ func (x *ListPermReq) GetAllScope() bool {
 	return false
 }
 
-func (x *ListPermReq) GetPermId() uint64 {
+func (x *ListPermReq) GetPermIds() []uint64 {
 	if x != nil {
-		return x.PermId
+		return x.PermIds
 	}
-	return 0
+	return nil
 }
 
 func (x *ListPermReq) GetPid() uint64 {
@@ -1135,7 +1215,7 @@ type ListPermResp struct {
 
 func (x *ListPermResp) Reset() {
 	*x = ListPermResp{}
-	mi := &file_rbac_proto_msgTypes[20]
+	mi := &file_rbac_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1147,7 +1227,7 @@ func (x *ListPermResp) String() string {
 func (*ListPermResp) ProtoMessage() {}
 
 func (x *ListPermResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[20]
+	mi := &file_rbac_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1160,7 +1240,7 @@ func (x *ListPermResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermResp.ProtoReflect.Descriptor instead.
 func (*ListPermResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{20}
+	return file_rbac_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListPermResp) GetTotal() uint32 {
@@ -1183,15 +1263,15 @@ type ListUserRoleReq struct {
 	Scope         string                 `protobuf:"bytes,2,opt,name=scope,proto3" json:"scope,omitempty"`
 	AllScope      bool                   `protobuf:"varint,3,opt,name=all_scope,json=allScope,proto3" json:"all_scope,omitempty"`
 	Status        int32                  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
-	UserId        uint64                 `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RoleId        uint64                 `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	UserIds       []uint64               `protobuf:"varint,5,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
+	RoleIds       []uint64               `protobuf:"varint,6,rep,packed,name=role_ids,json=roleIds,proto3" json:"role_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListUserRoleReq) Reset() {
 	*x = ListUserRoleReq{}
-	mi := &file_rbac_proto_msgTypes[21]
+	mi := &file_rbac_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1203,7 +1283,7 @@ func (x *ListUserRoleReq) String() string {
 func (*ListUserRoleReq) ProtoMessage() {}
 
 func (x *ListUserRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[21]
+	mi := &file_rbac_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1216,7 +1296,7 @@ func (x *ListUserRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserRoleReq.ProtoReflect.Descriptor instead.
 func (*ListUserRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{21}
+	return file_rbac_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListUserRoleReq) GetPage() *Page {
@@ -1247,18 +1327,18 @@ func (x *ListUserRoleReq) GetStatus() int32 {
 	return 0
 }
 
-func (x *ListUserRoleReq) GetUserId() uint64 {
+func (x *ListUserRoleReq) GetUserIds() []uint64 {
 	if x != nil {
-		return x.UserId
+		return x.UserIds
 	}
-	return 0
+	return nil
 }
 
-func (x *ListUserRoleReq) GetRoleId() uint64 {
+func (x *ListUserRoleReq) GetRoleIds() []uint64 {
 	if x != nil {
-		return x.RoleId
+		return x.RoleIds
 	}
-	return 0
+	return nil
 }
 
 type ListUserRoleResp struct {
@@ -1271,7 +1351,7 @@ type ListUserRoleResp struct {
 
 func (x *ListUserRoleResp) Reset() {
 	*x = ListUserRoleResp{}
-	mi := &file_rbac_proto_msgTypes[22]
+	mi := &file_rbac_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1283,7 +1363,7 @@ func (x *ListUserRoleResp) String() string {
 func (*ListUserRoleResp) ProtoMessage() {}
 
 func (x *ListUserRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[22]
+	mi := &file_rbac_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1296,7 +1376,7 @@ func (x *ListUserRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserRoleResp.ProtoReflect.Descriptor instead.
 func (*ListUserRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{22}
+	return file_rbac_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListUserRoleResp) GetTotal() uint32 {
@@ -1330,7 +1410,7 @@ type ListRoleReq struct {
 
 func (x *ListRoleReq) Reset() {
 	*x = ListRoleReq{}
-	mi := &file_rbac_proto_msgTypes[23]
+	mi := &file_rbac_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1342,7 +1422,7 @@ func (x *ListRoleReq) String() string {
 func (*ListRoleReq) ProtoMessage() {}
 
 func (x *ListRoleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[23]
+	mi := &file_rbac_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1355,7 +1435,7 @@ func (x *ListRoleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoleReq.ProtoReflect.Descriptor instead.
 func (*ListRoleReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{23}
+	return file_rbac_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListRoleReq) GetPage() *Page {
@@ -1431,7 +1511,7 @@ type ListRoleResp struct {
 
 func (x *ListRoleResp) Reset() {
 	*x = ListRoleResp{}
-	mi := &file_rbac_proto_msgTypes[24]
+	mi := &file_rbac_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1443,7 +1523,7 @@ func (x *ListRoleResp) String() string {
 func (*ListRoleResp) ProtoMessage() {}
 
 func (x *ListRoleResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[24]
+	mi := &file_rbac_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1456,7 +1536,7 @@ func (x *ListRoleResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoleResp.ProtoReflect.Descriptor instead.
 func (*ListRoleResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{24}
+	return file_rbac_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListRoleResp) GetTotal() uint32 {
@@ -1485,7 +1565,7 @@ type CheckPermReq struct {
 
 func (x *CheckPermReq) Reset() {
 	*x = CheckPermReq{}
-	mi := &file_rbac_proto_msgTypes[25]
+	mi := &file_rbac_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1497,7 +1577,7 @@ func (x *CheckPermReq) String() string {
 func (*CheckPermReq) ProtoMessage() {}
 
 func (x *CheckPermReq) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[25]
+	mi := &file_rbac_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1510,7 +1590,7 @@ func (x *CheckPermReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermReq.ProtoReflect.Descriptor instead.
 func (*CheckPermReq) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{25}
+	return file_rbac_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CheckPermReq) GetScope() string {
@@ -1550,7 +1630,7 @@ type CheckPermResp struct {
 
 func (x *CheckPermResp) Reset() {
 	*x = CheckPermResp{}
-	mi := &file_rbac_proto_msgTypes[26]
+	mi := &file_rbac_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1562,7 +1642,7 @@ func (x *CheckPermResp) String() string {
 func (*CheckPermResp) ProtoMessage() {}
 
 func (x *CheckPermResp) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[26]
+	mi := &file_rbac_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1575,7 +1655,7 @@ func (x *CheckPermResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermResp.ProtoReflect.Descriptor instead.
 func (*CheckPermResp) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{26}
+	return file_rbac_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CheckPermResp) GetRejected() bool {
@@ -1597,7 +1677,7 @@ type UserRole struct {
 
 func (x *UserRole) Reset() {
 	*x = UserRole{}
-	mi := &file_rbac_proto_msgTypes[27]
+	mi := &file_rbac_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1609,7 +1689,7 @@ func (x *UserRole) String() string {
 func (*UserRole) ProtoMessage() {}
 
 func (x *UserRole) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[27]
+	mi := &file_rbac_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1622,7 +1702,7 @@ func (x *UserRole) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserRole.ProtoReflect.Descriptor instead.
 func (*UserRole) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{27}
+	return file_rbac_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UserRole) GetUserId() uint64 {
@@ -1668,7 +1748,7 @@ type Role struct {
 
 func (x *Role) Reset() {
 	*x = Role{}
-	mi := &file_rbac_proto_msgTypes[28]
+	mi := &file_rbac_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1680,7 +1760,7 @@ func (x *Role) String() string {
 func (*Role) ProtoMessage() {}
 
 func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[28]
+	mi := &file_rbac_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1693,7 +1773,7 @@ func (x *Role) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Role.ProtoReflect.Descriptor instead.
 func (*Role) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{28}
+	return file_rbac_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *Role) GetRoleId() uint64 {
@@ -1761,7 +1841,7 @@ type Perm struct {
 
 func (x *Perm) Reset() {
 	*x = Perm{}
-	mi := &file_rbac_proto_msgTypes[29]
+	mi := &file_rbac_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1773,7 +1853,7 @@ func (x *Perm) String() string {
 func (*Perm) ProtoMessage() {}
 
 func (x *Perm) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[29]
+	mi := &file_rbac_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1786,7 +1866,7 @@ func (x *Perm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Perm.ProtoReflect.Descriptor instead.
 func (*Perm) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{29}
+	return file_rbac_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *Perm) GetPermId() uint64 {
@@ -1856,7 +1936,7 @@ type ResourceService struct {
 
 func (x *ResourceService) Reset() {
 	*x = ResourceService{}
-	mi := &file_rbac_proto_msgTypes[30]
+	mi := &file_rbac_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1868,7 +1948,7 @@ func (x *ResourceService) String() string {
 func (*ResourceService) ProtoMessage() {}
 
 func (x *ResourceService) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[30]
+	mi := &file_rbac_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1881,7 +1961,7 @@ func (x *ResourceService) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResourceService.ProtoReflect.Descriptor instead.
 func (*ResourceService) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{30}
+	return file_rbac_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ResourceService) GetService() string {
@@ -1898,6 +1978,66 @@ func (x *ResourceService) GetExtra() string {
 	return ""
 }
 
+type OverwriteUserRolesReq_UserRoleInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RoleId        uint64                 `protobuf:"varint,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"` // 角色id
+	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`               // 状态，参考enum UserRoleStatus
+	Scope         string                 `protobuf:"bytes,3,opt,name=scope,proto3" json:"scope,omitempty"`                  // 权限应用域，数据根据作用域可以被划分为不同的应用，相同域的数据在同一套rbac规则内，，如使用"corp_op"和"user_op"区分商户后台和用户系统的权限管理
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) Reset() {
+	*x = OverwriteUserRolesReq_UserRoleInfo{}
+	mi := &file_rbac_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OverwriteUserRolesReq_UserRoleInfo) ProtoMessage() {}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_rbac_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OverwriteUserRolesReq_UserRoleInfo.ProtoReflect.Descriptor instead.
+func (*OverwriteUserRolesReq_UserRoleInfo) Descriptor() ([]byte, []int) {
+	return file_rbac_proto_rawDescGZIP(), []int{0, 0}
+}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) GetRoleId() uint64 {
+	if x != nil {
+		return x.RoleId
+	}
+	return 0
+}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *OverwriteUserRolesReq_UserRoleInfo) GetScope() string {
+	if x != nil {
+		return x.Scope
+	}
+	return ""
+}
+
 type ListUserRoleResp_Item struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserRole      *UserRole              `protobuf:"bytes,1,opt,name=user_role,json=userRole,proto3" json:"user_role,omitempty"`
@@ -1908,7 +2048,7 @@ type ListUserRoleResp_Item struct {
 
 func (x *ListUserRoleResp_Item) Reset() {
 	*x = ListUserRoleResp_Item{}
-	mi := &file_rbac_proto_msgTypes[31]
+	mi := &file_rbac_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1920,7 +2060,7 @@ func (x *ListUserRoleResp_Item) String() string {
 func (*ListUserRoleResp_Item) ProtoMessage() {}
 
 func (x *ListUserRoleResp_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_rbac_proto_msgTypes[31]
+	mi := &file_rbac_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1933,7 +2073,7 @@ func (x *ListUserRoleResp_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserRoleResp_Item.ProtoReflect.Descriptor instead.
 func (*ListUserRoleResp_Item) Descriptor() ([]byte, []int) {
-	return file_rbac_proto_rawDescGZIP(), []int{22, 0}
+	return file_rbac_proto_rawDescGZIP(), []int{24, 0}
 }
 
 func (x *ListUserRoleResp_Item) GetUserRole() *UserRole {
@@ -1955,7 +2095,16 @@ var File_rbac_proto protoreflect.FileDescriptor
 const file_rbac_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"rbac.proto\x12\x04rbac\x1a\x0fmgorm_ext.proto\x1a\x13easymicro_ext.proto\"\x86\x01\n" +
+	"rbac.proto\x12\x04rbac\x1a\x0fmgorm_ext.proto\x1a\x13easymicro_ext.proto\"\xd0\x01\n" +
+	"\x15OverwriteUserRolesReq\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12G\n" +
+	"\n" +
+	"user_roles\x18\x02 \x03(\v2(.rbac.OverwriteUserRolesReq.UserRoleInfoR\tuserRoles\x1aU\n" +
+	"\fUserRoleInfo\x12\x17\n" +
+	"\arole_id\x18\x01 \x01(\x04R\x06roleId\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x14\n" +
+	"\x05scope\x18\x03 \x01(\tR\x05scope\"\x18\n" +
+	"\x16OverwriteUserRolesResp\"\x86\x01\n" +
 	"\rRemovePermReq\x12\x17\n" +
 	"\aperm_id\x18\x01 \x01(\x04R\x06permId\x120\n" +
 	"\x14auto_remove_children\x18\x02 \x01(\bR\x12autoRemoveChildren\x12*\n" +
@@ -1980,10 +2129,9 @@ const file_rbac_proto_rawDesc = "" +
 	"\x04role\x18\x01 \x01(\v2\n" +
 	".rbac.RoleR\x04role\"&\n" +
 	"\vSetRoleResp\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\x04R\x06roleId\"M\n" +
+	"\arole_id\x18\x01 \x01(\x04R\x06roleId\"=\n" +
 	"\x0eSetUserRoleReq\x12+\n" +
-	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"!\n" +
+	"\tuser_role\x18\x01 \x01(\v2\x0e.rbac.UserRoleR\buserRole\"!\n" +
 	"\x0fSetUserRoleResp\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"=\n" +
 	"\x0eAddUserRoleReq\x12+\n" +
@@ -2001,28 +2149,28 @@ const file_rbac_proto_rawDesc = "" +
 	"\vAddPermResp\"7\n" +
 	"\x04Page\x12\x1b\n" +
 	"\tpage_size\x18\x01 \x01(\rR\bpageSize\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\rR\x04page\"\xbc\x01\n" +
+	"\x04page\x18\x02 \x01(\rR\x04page\"\xbe\x01\n" +
 	"\vListPermReq\x12\x1e\n" +
 	"\x04page\x18\x01 \x01(\v2\n" +
 	".rbac.PageR\x04page\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05scope\x18\x03 \x01(\tR\x05scope\x12\x1b\n" +
-	"\tall_scope\x18\x04 \x01(\bR\ballScope\x12\x17\n" +
-	"\aperm_id\x18\x05 \x01(\x04R\x06permId\x12\x10\n" +
+	"\tall_scope\x18\x04 \x01(\bR\ballScope\x12\x19\n" +
+	"\bperm_ids\x18\x05 \x03(\x04R\apermIds\x12\x10\n" +
 	"\x03pid\x18\x06 \x01(\x04R\x03pid\x12\x1b\n" +
 	"\tname_like\x18\a \x01(\tR\bnameLike\"D\n" +
 	"\fListPermResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12\x1e\n" +
 	"\x04list\x18\x02 \x03(\v2\n" +
-	".rbac.PermR\x04list\"\xae\x01\n" +
+	".rbac.PermR\x04list\"\xb2\x01\n" +
 	"\x0fListUserRoleReq\x12\x1e\n" +
 	"\x04page\x18\x01 \x01(\v2\n" +
 	".rbac.PageR\x04page\x12\x14\n" +
 	"\x05scope\x18\x02 \x01(\tR\x05scope\x12\x1b\n" +
 	"\tall_scope\x18\x03 \x01(\bR\ballScope\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\x05R\x06status\x12\x17\n" +
-	"\auser_id\x18\x05 \x01(\x04R\x06userId\x12\x17\n" +
-	"\arole_id\x18\x06 \x01(\x04R\x06roleId\"\x9e\x01\n" +
+	"\x06status\x18\x04 \x01(\x05R\x06status\x12\x19\n" +
+	"\buser_ids\x18\x05 \x03(\x04R\auserIds\x12\x19\n" +
+	"\brole_ids\x18\x06 \x03(\x04R\aroleIds\"\x9e\x01\n" +
 	"\x10ListUserRoleResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12/\n" +
 	"\x04list\x18\x02 \x03(\v2\x1b.rbac.ListUserRoleResp.ItemR\x04list\x1aC\n" +
@@ -2103,13 +2251,14 @@ const file_rbac_proto_rawDesc = "" +
 	"RoleStatus\x12\x11\n" +
 	"\rRoleStatusNil\x10\x00\x12\x14\n" +
 	"\x10RoleStatusNormal\x10\x01\x12\x14\n" +
-	"\x10RoleStatusFrozen\x10\x022\xb4\x04\n" +
+	"\x10RoleStatusFrozen\x10\x022\x85\x05\n" +
 	"\x04RBAC\x124\n" +
 	"\tCheckPerm\x12\x12.rbac.CheckPermReq\x1a\x13.rbac.CheckPermResp\x12=\n" +
 	"\fListUserRole\x12\x15.rbac.ListUserRoleReq\x1a\x16.rbac.ListUserRoleResp\x121\n" +
 	"\bListRole\x12\x11.rbac.ListRoleReq\x1a\x12.rbac.ListRoleResp\x121\n" +
 	"\bListPerm\x12\x11.rbac.ListPermReq\x1a\x12.rbac.ListPermResp\x12:\n" +
-	"\vSetUserRole\x12\x14.rbac.SetUserRoleReq\x1a\x15.rbac.SetUserRoleResp\x12.\n" +
+	"\vSetUserRole\x12\x14.rbac.SetUserRoleReq\x1a\x15.rbac.SetUserRoleResp\x12O\n" +
+	"\x12OverwriteUserRoles\x12\x1b.rbac.OverwriteUserRolesReq\x1a\x1c.rbac.OverwriteUserRolesResp\x12.\n" +
 	"\aSetRole\x12\x10.rbac.SetRoleReq\x1a\x11.rbac.SetRoleResp\x12.\n" +
 	"\aSetPerm\x12\x10.rbac.SetPermReq\x1a\x11.rbac.SetPermResp\x12C\n" +
 	"\x0eRemoveUserRole\x12\x17.rbac.RemoveUserRoleReq\x1a\x18.rbac.RemoveUserRoleResp\x127\n" +
@@ -2131,84 +2280,90 @@ func file_rbac_proto_rawDescGZIP() []byte {
 }
 
 var file_rbac_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_rbac_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_rbac_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_rbac_proto_goTypes = []any{
-	(ErrCode)(0),                  // 0: rbac.ErrCode
-	(UserRoleStatus)(0),           // 1: rbac.UserRoleStatus
-	(RoleStatus)(0),               // 2: rbac.RoleStatus
-	(*RemovePermReq)(nil),         // 3: rbac.RemovePermReq
-	(*RemovePermResp)(nil),        // 4: rbac.RemovePermResp
-	(*RemoveRoleReq)(nil),         // 5: rbac.RemoveRoleReq
-	(*RemoveRoleResp)(nil),        // 6: rbac.RemoveRoleResp
-	(*RemoveUserRoleReq)(nil),     // 7: rbac.RemoveUserRoleReq
-	(*RemoveUserRoleResp)(nil),    // 8: rbac.RemoveUserRoleResp
-	(*SetPermReq)(nil),            // 9: rbac.SetPermReq
-	(*SetPermResp)(nil),           // 10: rbac.SetPermResp
-	(*SetRoleReq)(nil),            // 11: rbac.SetRoleReq
-	(*SetRoleResp)(nil),           // 12: rbac.SetRoleResp
-	(*SetUserRoleReq)(nil),        // 13: rbac.SetUserRoleReq
-	(*SetUserRoleResp)(nil),       // 14: rbac.SetUserRoleResp
-	(*AddUserRoleReq)(nil),        // 15: rbac.AddUserRoleReq
-	(*AddUserRoleResp)(nil),       // 16: rbac.AddUserRoleResp
-	(*AddRoleReq)(nil),            // 17: rbac.AddRoleReq
-	(*AddRoleResp)(nil),           // 18: rbac.AddRoleResp
-	(*AddPermReq)(nil),            // 19: rbac.AddPermReq
-	(*AddPermResp)(nil),           // 20: rbac.AddPermResp
-	(*Page)(nil),                  // 21: rbac.Page
-	(*ListPermReq)(nil),           // 22: rbac.ListPermReq
-	(*ListPermResp)(nil),          // 23: rbac.ListPermResp
-	(*ListUserRoleReq)(nil),       // 24: rbac.ListUserRoleReq
-	(*ListUserRoleResp)(nil),      // 25: rbac.ListUserRoleResp
-	(*ListRoleReq)(nil),           // 26: rbac.ListRoleReq
-	(*ListRoleResp)(nil),          // 27: rbac.ListRoleResp
-	(*CheckPermReq)(nil),          // 28: rbac.CheckPermReq
-	(*CheckPermResp)(nil),         // 29: rbac.CheckPermResp
-	(*UserRole)(nil),              // 30: rbac.UserRole
-	(*Role)(nil),                  // 31: rbac.Role
-	(*Perm)(nil),                  // 32: rbac.Perm
-	(*ResourceService)(nil),       // 33: rbac.ResourceService
-	(*ListUserRoleResp_Item)(nil), // 34: rbac.ListUserRoleResp.Item
+	(ErrCode)(0),                               // 0: rbac.ErrCode
+	(UserRoleStatus)(0),                        // 1: rbac.UserRoleStatus
+	(RoleStatus)(0),                            // 2: rbac.RoleStatus
+	(*OverwriteUserRolesReq)(nil),              // 3: rbac.OverwriteUserRolesReq
+	(*OverwriteUserRolesResp)(nil),             // 4: rbac.OverwriteUserRolesResp
+	(*RemovePermReq)(nil),                      // 5: rbac.RemovePermReq
+	(*RemovePermResp)(nil),                     // 6: rbac.RemovePermResp
+	(*RemoveRoleReq)(nil),                      // 7: rbac.RemoveRoleReq
+	(*RemoveRoleResp)(nil),                     // 8: rbac.RemoveRoleResp
+	(*RemoveUserRoleReq)(nil),                  // 9: rbac.RemoveUserRoleReq
+	(*RemoveUserRoleResp)(nil),                 // 10: rbac.RemoveUserRoleResp
+	(*SetPermReq)(nil),                         // 11: rbac.SetPermReq
+	(*SetPermResp)(nil),                        // 12: rbac.SetPermResp
+	(*SetRoleReq)(nil),                         // 13: rbac.SetRoleReq
+	(*SetRoleResp)(nil),                        // 14: rbac.SetRoleResp
+	(*SetUserRoleReq)(nil),                     // 15: rbac.SetUserRoleReq
+	(*SetUserRoleResp)(nil),                    // 16: rbac.SetUserRoleResp
+	(*AddUserRoleReq)(nil),                     // 17: rbac.AddUserRoleReq
+	(*AddUserRoleResp)(nil),                    // 18: rbac.AddUserRoleResp
+	(*AddRoleReq)(nil),                         // 19: rbac.AddRoleReq
+	(*AddRoleResp)(nil),                        // 20: rbac.AddRoleResp
+	(*AddPermReq)(nil),                         // 21: rbac.AddPermReq
+	(*AddPermResp)(nil),                        // 22: rbac.AddPermResp
+	(*Page)(nil),                               // 23: rbac.Page
+	(*ListPermReq)(nil),                        // 24: rbac.ListPermReq
+	(*ListPermResp)(nil),                       // 25: rbac.ListPermResp
+	(*ListUserRoleReq)(nil),                    // 26: rbac.ListUserRoleReq
+	(*ListUserRoleResp)(nil),                   // 27: rbac.ListUserRoleResp
+	(*ListRoleReq)(nil),                        // 28: rbac.ListRoleReq
+	(*ListRoleResp)(nil),                       // 29: rbac.ListRoleResp
+	(*CheckPermReq)(nil),                       // 30: rbac.CheckPermReq
+	(*CheckPermResp)(nil),                      // 31: rbac.CheckPermResp
+	(*UserRole)(nil),                           // 32: rbac.UserRole
+	(*Role)(nil),                               // 33: rbac.Role
+	(*Perm)(nil),                               // 34: rbac.Perm
+	(*ResourceService)(nil),                    // 35: rbac.ResourceService
+	(*OverwriteUserRolesReq_UserRoleInfo)(nil), // 36: rbac.OverwriteUserRolesReq.UserRoleInfo
+	(*ListUserRoleResp_Item)(nil),              // 37: rbac.ListUserRoleResp.Item
 }
 var file_rbac_proto_depIdxs = []int32{
-	32, // 0: rbac.SetPermReq.perm:type_name -> rbac.Perm
-	31, // 1: rbac.SetRoleReq.role:type_name -> rbac.Role
-	30, // 2: rbac.SetUserRoleReq.user_role:type_name -> rbac.UserRole
-	30, // 3: rbac.AddUserRoleReq.user_role:type_name -> rbac.UserRole
-	31, // 4: rbac.AddRoleReq.role:type_name -> rbac.Role
-	32, // 5: rbac.AddPermReq.perm:type_name -> rbac.Perm
-	21, // 6: rbac.ListPermReq.page:type_name -> rbac.Page
-	32, // 7: rbac.ListPermResp.list:type_name -> rbac.Perm
-	21, // 8: rbac.ListUserRoleReq.page:type_name -> rbac.Page
-	34, // 9: rbac.ListUserRoleResp.list:type_name -> rbac.ListUserRoleResp.Item
-	21, // 10: rbac.ListRoleReq.page:type_name -> rbac.Page
-	31, // 11: rbac.ListRoleResp.list:type_name -> rbac.Role
-	33, // 12: rbac.Perm.resource_services:type_name -> rbac.ResourceService
-	30, // 13: rbac.ListUserRoleResp.Item.user_role:type_name -> rbac.UserRole
-	28, // 14: rbac.RBAC.CheckPerm:input_type -> rbac.CheckPermReq
-	24, // 15: rbac.RBAC.ListUserRole:input_type -> rbac.ListUserRoleReq
-	26, // 16: rbac.RBAC.ListRole:input_type -> rbac.ListRoleReq
-	22, // 17: rbac.RBAC.ListPerm:input_type -> rbac.ListPermReq
-	13, // 18: rbac.RBAC.SetUserRole:input_type -> rbac.SetUserRoleReq
-	11, // 19: rbac.RBAC.SetRole:input_type -> rbac.SetRoleReq
-	9,  // 20: rbac.RBAC.SetPerm:input_type -> rbac.SetPermReq
-	7,  // 21: rbac.RBAC.RemoveUserRole:input_type -> rbac.RemoveUserRoleReq
-	5,  // 22: rbac.RBAC.RemoveRole:input_type -> rbac.RemoveRoleReq
-	3,  // 23: rbac.RBAC.RemovePerm:input_type -> rbac.RemovePermReq
-	29, // 24: rbac.RBAC.CheckPerm:output_type -> rbac.CheckPermResp
-	25, // 25: rbac.RBAC.ListUserRole:output_type -> rbac.ListUserRoleResp
-	27, // 26: rbac.RBAC.ListRole:output_type -> rbac.ListRoleResp
-	23, // 27: rbac.RBAC.ListPerm:output_type -> rbac.ListPermResp
-	14, // 28: rbac.RBAC.SetUserRole:output_type -> rbac.SetUserRoleResp
-	12, // 29: rbac.RBAC.SetRole:output_type -> rbac.SetRoleResp
-	10, // 30: rbac.RBAC.SetPerm:output_type -> rbac.SetPermResp
-	8,  // 31: rbac.RBAC.RemoveUserRole:output_type -> rbac.RemoveUserRoleResp
-	6,  // 32: rbac.RBAC.RemoveRole:output_type -> rbac.RemoveRoleResp
-	4,  // 33: rbac.RBAC.RemovePerm:output_type -> rbac.RemovePermResp
-	24, // [24:34] is the sub-list for method output_type
-	14, // [14:24] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	36, // 0: rbac.OverwriteUserRolesReq.user_roles:type_name -> rbac.OverwriteUserRolesReq.UserRoleInfo
+	34, // 1: rbac.SetPermReq.perm:type_name -> rbac.Perm
+	33, // 2: rbac.SetRoleReq.role:type_name -> rbac.Role
+	32, // 3: rbac.SetUserRoleReq.user_role:type_name -> rbac.UserRole
+	32, // 4: rbac.AddUserRoleReq.user_role:type_name -> rbac.UserRole
+	33, // 5: rbac.AddRoleReq.role:type_name -> rbac.Role
+	34, // 6: rbac.AddPermReq.perm:type_name -> rbac.Perm
+	23, // 7: rbac.ListPermReq.page:type_name -> rbac.Page
+	34, // 8: rbac.ListPermResp.list:type_name -> rbac.Perm
+	23, // 9: rbac.ListUserRoleReq.page:type_name -> rbac.Page
+	37, // 10: rbac.ListUserRoleResp.list:type_name -> rbac.ListUserRoleResp.Item
+	23, // 11: rbac.ListRoleReq.page:type_name -> rbac.Page
+	33, // 12: rbac.ListRoleResp.list:type_name -> rbac.Role
+	35, // 13: rbac.Perm.resource_services:type_name -> rbac.ResourceService
+	32, // 14: rbac.ListUserRoleResp.Item.user_role:type_name -> rbac.UserRole
+	30, // 15: rbac.RBAC.CheckPerm:input_type -> rbac.CheckPermReq
+	26, // 16: rbac.RBAC.ListUserRole:input_type -> rbac.ListUserRoleReq
+	28, // 17: rbac.RBAC.ListRole:input_type -> rbac.ListRoleReq
+	24, // 18: rbac.RBAC.ListPerm:input_type -> rbac.ListPermReq
+	15, // 19: rbac.RBAC.SetUserRole:input_type -> rbac.SetUserRoleReq
+	3,  // 20: rbac.RBAC.OverwriteUserRoles:input_type -> rbac.OverwriteUserRolesReq
+	13, // 21: rbac.RBAC.SetRole:input_type -> rbac.SetRoleReq
+	11, // 22: rbac.RBAC.SetPerm:input_type -> rbac.SetPermReq
+	9,  // 23: rbac.RBAC.RemoveUserRole:input_type -> rbac.RemoveUserRoleReq
+	7,  // 24: rbac.RBAC.RemoveRole:input_type -> rbac.RemoveRoleReq
+	5,  // 25: rbac.RBAC.RemovePerm:input_type -> rbac.RemovePermReq
+	31, // 26: rbac.RBAC.CheckPerm:output_type -> rbac.CheckPermResp
+	27, // 27: rbac.RBAC.ListUserRole:output_type -> rbac.ListUserRoleResp
+	29, // 28: rbac.RBAC.ListRole:output_type -> rbac.ListRoleResp
+	25, // 29: rbac.RBAC.ListPerm:output_type -> rbac.ListPermResp
+	16, // 30: rbac.RBAC.SetUserRole:output_type -> rbac.SetUserRoleResp
+	4,  // 31: rbac.RBAC.OverwriteUserRoles:output_type -> rbac.OverwriteUserRolesResp
+	14, // 32: rbac.RBAC.SetRole:output_type -> rbac.SetRoleResp
+	12, // 33: rbac.RBAC.SetPerm:output_type -> rbac.SetPermResp
+	10, // 34: rbac.RBAC.RemoveUserRole:output_type -> rbac.RemoveUserRoleResp
+	8,  // 35: rbac.RBAC.RemoveRole:output_type -> rbac.RemoveRoleResp
+	6,  // 36: rbac.RBAC.RemovePerm:output_type -> rbac.RemovePermResp
+	26, // [26:37] is the sub-list for method output_type
+	15, // [15:26] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_rbac_proto_init() }
@@ -2222,7 +2377,7 @@ func file_rbac_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_rbac_proto_rawDesc), len(file_rbac_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   32,
+			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -11,6 +11,7 @@ import (
 	"github.com/995933447/mgorm"
 	"github.com/995933447/rbac/rbac"
 	"github.com/995933447/rbac/rbacserver/db"
+	"github.com/995933447/rbac/rbacserver/util"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -54,7 +55,7 @@ func (s *RBAC) SetRole(ctx context.Context, req *rbac.SetRoleReq) (*rbac.SetRole
 	mod := db.NewRoleModel()
 	if req.Role.RoleId == 0 {
 		allocIdResp, err := idgen.IdGenGRPC().AllocId(ctx, &idgen.AllocIdReq{
-			TbName: rbac.RoleTbName,
+			TbName: util.GenIdGenTbName(mod.GetDb(), mod.GetTb()),
 		})
 		if err != nil {
 			fastlog.Error(err)

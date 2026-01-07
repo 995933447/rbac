@@ -10,7 +10,6 @@ import (
 	"github.com/995933447/rbac/rbac"
 	"github.com/995933447/rbac/rbacserver/db"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -60,27 +59,15 @@ func (s *RBAC) SetUserRole(ctx context.Context, req *rbac.SetUserRoleReq) (*rbac
 			return nil, err
 		}
 
-		if req.Id == "" {
-			err = mod.InsertOne(ctx, userRole)
-			if err != nil {
-				fastlog.Error(err)
-				return nil, err
-			}
-
-			resp.Id = userRole.ID.Hex()
-
-			return &resp, nil
+		err = mod.InsertOne(ctx, userRole)
+		if err != nil {
+			fastlog.Error(err)
+			return nil, err
 		}
-	}
 
-	if oldUserRole.ID.Hex() != req.Id {
-		return nil, grpc.NewRPCErr(rbac.ErrCode_ErrCodeUserRoleExisted)
-	}
+		resp.Id = userRole.ID.Hex()
 
-	objId, err := primitive.ObjectIDFromHex(req.Id)
-	if err != nil {
-		fastlog.Error(err)
-		return nil, err
+		return &resp, nil
 	}
 
 	bm, err := mgorm.ToBsonM(userRole)
@@ -89,13 +76,13 @@ func (s *RBAC) SetUserRole(ctx context.Context, req *rbac.SetUserRoleReq) (*rbac
 		return nil, err
 	}
 
-	_, err = mod.UpdateOne(ctx, bson.M{"_id": objId}, bm)
+	_, err = mod.UpdateOne(ctx, bson.M{"_id": oldUserRole.ID}, bm)
 	if err != nil {
 		fastlog.Error(err)
 		return nil, err
 	}
 
-	resp.Id = objId.Hex()
+	resp.Id = oldUserRole.ID.Hex()
 
 	return &resp, nil
 }
